@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toucanshood — Mint Announcement & Wallet Eligibility Checker</title>
+  <meta name="description" content="Official Toucanshood NFT Mint Announcement & Wallet Eligibility Checker. 2,222 Supply on Robinhood Chain. OG Free Mint & FCFS Allowlist 0.0005 ETH on OpenSea.">
+  <meta name="keywords" content="Toucanshood, NFT Mint, Wallet Checker, FCFS Allowlist, Robinhood Chain, OpenSea, Free Mint, Pixel Art Toucans">
+
+  <!-- OpenGraph / Social Sharing -->
+  <meta property="og:title" content="Toucanshood — Mint Announcement & Wallet Checker">
+  <meta property="og:description" content="Check your wallet eligibility for OG FREEMINT and FCFS Allowlist on Robinhood Chain & OpenSea.">
+  <meta property="og:image" content="Padrtfgetkhi.png">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Animated Particle Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Sticky Navigation Header -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" id="brand-logo-link">
+        <img src="Padfgetkhi.png" alt="Toucanshood Logo" class="brand-icon pixelated">
+        <span class="brand-title">TOUCANSHOOD</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#announcement" class="nav-link">Mint Specs</a></li>
+        <li><a href="#checker" class="nav-link">Wallet Checker</a></li>
+        <li><a href="#gallery" class="nav-link">Flock Gallery</a></li>
+        <li><a href="#customizer" class="nav-link">Randomizer</a></li>
+        <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="audio-toggle" title="Toggle Audio Sound FX" aria-label="Toggle Sound">🔊</button>
+        <button class="icon-btn" id="theme-toggle" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">☀️</button>
+        <a href="#checker" class="btn-primary" id="nav-checker-btn" style="text-decoration: none;">
+          <span>🔍</span>
+          <span>Wallet Checker</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>OFFICIAL MINT ANNOUNCEMENT LIVE</span>
+        </div>
+
+        <h1 class="hero-title">
+          Toucanshood <span>Pixel Collection</span>
+        </h1>
+
+        <p class="hero-description">
+          The official 2,222 pixel Toucan collection flying onto Robinhood Chain & OpenSea. OG Free Mint + FCFS Allowlist sale starting 06.08.26! Check your wallet eligibility below.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#checker" class="btn-primary" style="text-decoration: none;">
+            <span>🔍</span> Check Wallet Eligibility
+          </a>
+          <a href="#announcement" class="btn-secondary" style="text-decoration: none;">
+            <span>📋</span> View Mint Specs
+          </a>
+        </div>
+
+        <!-- Collection Analytics Bar -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-value">2,222</div>
+            <div class="stat-label">Total Supply</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">0.0005 ETH</div>
+            <div class="stat-label">FCFS Price</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">Robinhood</div>
+            <div class="stat-label">Blockchain</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">OpenSea</div>
+            <div class="stat-label">Marketplace</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Hero Card -->
+      <div class="hero-visual">
+        <div class="showcase-card" id="featured-showcase-card">
+          <div class="showcase-img-wrap">
+            <img src="Padrtfgetkhi.png" alt="Featured Red Hoodie Toucan" class="showcase-img pixelated">
+          </div>
+          <div class="showcase-info">
+            <div>
+              <div class="showcase-name">Toucan #03 — Crimson Hood</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">Red Hoodie • Robinhood Chain Hero</div>
+            </div>
+            <span class="showcase-badge">OG FAVORITE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MINT ANNOUNCEMENT POSTER SECTION (Matches Image 2) -->
+  <section class="announcement-section" id="announcement">
+    <div class="container">
+      <div class="announcement-poster">
+        <div class="poster-header-tag">
+          MINT ANNOUNCEMENT_
+        </div>
+
+        <div class="poster-body">
+          <div class="poster-art-wrap">
+            <img src="Padrtfgetkhi.png" alt="Mint Announcement Toucan" class="poster-art-img pixelated">
+          </div>
+
+          <div class="poster-specs">
+            <div class="spec-pill">
+              <span class="spec-bullet">•</span> <span class="spec-key">DATE</span> <span class="spec-val">06.08.26</span>
+            </div>
+
+            <div class="spec-pill">
+              <span class="spec-bullet">•</span> <span class="spec-key">SUPPLY</span> <span class="spec-val">2222</span>
+            </div>
+
+            <div class="spec-pill">
+              <span class="spec-bullet">•</span> <span class="spec-key">CHAIN</span> <span class="spec-val">ROBINHOOD</span>
+            </div>
+
+            <div class="spec-pill">
+              <span class="spec-bullet">•</span> <span class="spec-key">MINT ON</span> <span class="spec-val">OPENSEA</span>
+            </div>
+
+            <div class="spec-pill spec-group-header">
+              <span class="spec-bullet">•</span> <span class="spec-key">PRICE AND LIMIT</span>
+            </div>
+
+            <div class="spec-pill spec-sub">
+              <span class="spec-bullet">•</span> <span class="spec-key">OG FREEMINT</span> <span class="spec-val">PER WALLET 1</span>
+            </div>
+
+            <div class="spec-pill spec-sub">
+              <span class="spec-bullet">•</span> <span class="spec-key">FCFS</span> <span class="spec-val">0.0005 PER WALLET 3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WALLET CHECKER SECTION -->
+  <section class="checker-section" id="checker">
+    <div class="container">
+      <div class="checker-card">
+        <div class="section-header" style="margin-bottom: 32px;">
+          <span class="section-tag">FREEMINT & ALLOWLIST LOOKUP</span>
+          <h2 class="section-title">OG & FCFS Wallet Checker</h2>
+          <p class="section-desc">Paste your EVM or Robinhood Wallet Address below to check if your wallet is registered for the <strong>OG FREEMINT</strong> or <strong>FCFS ALLOWLIST</strong> tier!</p>
+        </div>
+
+        <div class="checker-input-box">
+          <input type="text" id="wallet-input" class="checker-input" placeholder="Enter wallet address (e.g. 0x7F2...3B92)" aria-label="Enter wallet address">
+          <button class="btn-primary" id="check-wallet-btn">
+            <span>⚡</span> Check Eligibility
+          </button>
+        </div>
+
+        <!-- Interactive Demo Quick Paste Buttons -->
+        <div class="sample-wallets">
+          <span style="font-size: 0.85rem; color: var(--text-dim);">Try sample addresses:</span>
+          <button class="sample-btn" data-address="0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7">OG Freemint Winner</button>
+          <button class="sample-btn" data-address="0x71C7656EC7ab88b098defB751B7401B5f6d8976F">FCFS Allowlist</button>
+        </div>
+
+        <!-- Result Box -->
+        <div class="checker-result-box" id="checker-result-box">
+          <div class="result-placeholder">
+            <span style="font-size: 2rem;">🦜</span>
+            <p>Enter an address above and click "Check Eligibility"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">EXPLORE THE PREVIEW ARTWORK</span>
+        <h2 class="section-title">Flock Traits Gallery</h2>
+        <p class="section-desc">Inspect preview Toucan avatars from the 2,222 collection. Filter by outerwear, headwear, or rarity tiers.</p>
+      </div>
+
+      <!-- Controls & Filter Bar -->
+      <div class="gallery-controls">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search by name, trait or lore..." aria-label="Search gallery">
+        </div>
+
+        <div class="filter-group">
+          <select id="filter-headwear" class="select-custom" aria-label="Filter by Headwear">
+            <option value="">All Headwear</option>
+          </select>
+
+          <select id="filter-outfit" class="select-custom" aria-label="Filter by Outfit">
+            <option value="">All Outerwear</option>
+          </select>
+
+          <select id="filter-tier" class="select-custom" aria-label="Filter by Rarity Tier">
+            <option value="">All Rarity Tiers</option>
+            <option value="Mythic">Mythic</option>
+            <option value="Legendary">Legendary</option>
+            <option value="Epic">Epic</option>
+            <option value="Rare">Rare</option>
+            <option value="Uncommon">Uncommon</option>
+            <option value="Common">Common</option>
+          </select>
+
+          <select id="sort-select" class="select-custom" aria-label="Sort options">
+            <option value="id">Sort by ID (Default)</option>
+            <option value="rarity">Sort by Rarity (Highest First)</option>
+            <option value="rarity-desc">Sort by Rarity (Lowest First)</option>
+            <option value="name">Sort by Name</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Item Count Indicator -->
+      <div id="item-count" style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px; text-align: right;"></div>
+
+      <!-- Dynamic Gallery Grid -->
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Randomizer / Customizer Section -->
+  <section class="interactive-section" id="customizer">
+    <div class="container">
+      <div class="widget-card">
+        <div class="widget-preview-box">
+          <img id="random-img" src="Padfgetkhi.png" alt="Random Toucan Preview" class="widget-preview-img pixelated">
+        </div>
+
+        <div class="widget-content">
+          <h3>Flock Randomizer & Inspector</h3>
+          <p>Discover random Toucan avatars from the 2,222 supply dataset. Click below to inspect attributes, rarity rank, and lore.</p>
+          <div style="font-family: var(--font-heading); font-size: 0.95rem; color: var(--neon-cyan); margin-bottom: 24px;" id="random-name">
+            Toucan #01 — Violet Beanie
+          </div>
+
+          <div class="widget-actions">
+            <button class="btn-primary" id="randomize-btn">
+              <span>🎲</span> Randomize Toucan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section class="roadmap-section" id="roadmap">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">PROJECT TIMELINE</span>
+        <h2 class="section-title">Mint & Beyond Roadmap</h2>
+        <p class="section-desc">Our official mint launch schedule and ecosystem expansion timeline.</p>
+      </div>
+
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <span class="roadmap-phase">PHASE 01 — UPCOMING (06.08.26)</span>
+          <h3 class="roadmap-title">Mint Announcement & Launch</h3>
+          <ul class="roadmap-list">
+            <li>Official Mint Launch on OpenSea (Robinhood Chain)</li>
+            <li>OG Freemint tier (1 per wallet for early supporters)</li>
+            <li>FCFS Allowlist Mint at 0.0005 ETH (Max 3 per wallet)</li>
+          </ul>
+        </div>
+
+        <div class="roadmap-card">
+          <span class="roadmap-phase" style="color: var(--neon-cyan);">PHASE 02 — POST MINT</span>
+          <h3 class="roadmap-title">Canopy Perks & Staking</h3>
+          <ul class="roadmap-list">
+            <li>OpenSea marketplace verification & secondary trading</li>
+            <li>Exclusive holder Discord role & high-res artwork downloads</li>
+            <li>Community staking pool rewards</li>
+          </ul>
+        </div>
+
+        <div class="roadmap-card">
+          <span class="roadmap-phase" style="color: var(--neon-purple);">PHASE 03 — FUTURE</span>
+          <h3 class="roadmap-title">Jungle Sandbox DAO</h3>
+          <ul class="roadmap-list">
+            <li>DAO Governance treasury launch</li>
+            <li>Pixel metaverse avatar integration on Robinhood Chain</li>
+            <li>Gen-2 Toucan breeding mechanics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="Padfgetkhi.png" alt="Logo" style="width: 28px; height: 28px;" class="pixelated">
+        <span style="font-family: var(--font-heading); font-size: 0.9rem; color: var(--neon-green);">TOUCANSHOOD</span>
+      </div>
+      <div class="footer-text">
+        © 2026 Toucanshood. Minting on OpenSea • Robinhood Chain • Supply 2,222.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Artwork Inspector -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">✕</button>
+      <div class="modal-body">
+        <div class="modal-img-wrap">
+          <img id="modal-img" src="" alt="Toucan Artwork" class="modal-img pixelated">
+        </div>
+        <div class="modal-details">
+          <h3 class="modal-title" id="modal-title">Toucan #01</h3>
+          <div class="modal-subtitle" id="modal-subtitle">Rarity Rank #1</div>
+          <p class="modal-desc" id="modal-desc">Description lore text goes here.</p>
+
+          <div class="modal-traits-grid" id="modal-traits-grid">
+            <!-- Traits populated via JavaScript -->
+          </div>
+
+          <div class="modal-actions">
+            <a id="modal-download-btn" href="#" download class="btn-primary" style="text-decoration: none; flex: 1; text-align: center; justify-content: center;">
+              <span>💾</span> Download Artwork
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Catalog & Main Script -->
+  <script src="toucansData.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
