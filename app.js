@@ -278,15 +278,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="toucan-card" data-id="${item.id}">
         <div class="card-img-wrap">
           <img class="card-img pixelated" src="${item.file}" alt="${item.name}" loading="lazy">
-          <span class="card-rank">#000</span>
         </div>
         <div class="card-content">
           <div class="card-header">
             <h4 class="card-title">${item.name}</h4>
-          </div>
-          <div class="trait-tags">
-            <span class="trait-pill">🧢 ${item.headwear}</span>
-            <span class="trait-pill">🧥 ${item.outwear}</span>
           </div>
         </div>
       </div>
@@ -315,35 +310,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalImg.src = toucan.file;
     modalTitle.textContent = toucan.name;
-    modalSubtitle.textContent = `Toucanshood Collection #000`;
-    modalDesc.textContent = toucan.description;
+    if (modalSubtitle) modalSubtitle.textContent = '';
+    if (modalDesc) modalDesc.textContent = '';
+    if (modalTraitsGrid) modalTraitsGrid.innerHTML = '';
 
-    modalTraitsGrid.innerHTML = `
-      <div class="modal-trait-box">
-        <div class="trait-label">Tier</div>
-        <div class="trait-value">${toucan.tier}</div>
-      </div>
-      <div class="modal-trait-box">
-        <div class="trait-label">Headwear</div>
-        <div class="trait-value">${toucan.headwear}</div>
-      </div>
-      <div class="modal-trait-box">
-        <div class="trait-label">Outerwear</div>
-        <div class="trait-value">${toucan.outwear}</div>
-      </div>
-      <div class="modal-trait-box">
-        <div class="trait-label">Beak</div>
-        <div class="trait-value">${toucan.beak}</div>
-      </div>
-      <div class="modal-trait-box">
-        <div class="trait-label">Eyes</div>
-        <div class="trait-value">${toucan.eyes}</div>
-      </div>
-      <div class="modal-trait-box">
-        <div class="trait-label">Background</div>
-        <div class="trait-value">${toucan.background}</div>
-      </div>
-    `;
 
     if (modalDownloadBtn) {
       modalDownloadBtn.href = toucan.file;
