@@ -2,31 +2,14 @@
    TOUCANSHOOD — Interactive Application Script
    ========================================================================== */
 
-// Allowlist state loaded from wallets/gtd.csv and wallets/public.csv
-let ogWallets = new Set();
-let fcfsWallets = new Set();
+// Build GTD wallet Set from gtd-list.js (case-insensitive, works on file:// too)
+// GTD_ALLOWLIST is declared in wallets/gtd-list.js loaded before this script
+const gtdWallets = new Set(
+  (typeof GTD_ALLOWLIST !== 'undefined' ? GTD_ALLOWLIST : [])
+    .map(a => a.toLowerCase())
+);
 
-// Parse a simple CSV file with a single 'wallet_address' column
-async function loadCSV(url) {
-  const addresses = new Set();
-  try {
-    const response = await fetch(url);
-    if (!response.ok) return addresses;
-    const text = await response.text();
-    text.split('\n').forEach((line, i) => {
-      if (i === 0) return; // skip header
-      const addr = line.trim();
-      if (addr) addresses.add(addr.toLowerCase());
-    });
-  } catch (e) {
-    console.warn(`Could not load ${url}:`, e);
-  }
-  return addresses;
-}
-
-document.addEventListener('DOMContentLoaded', async () => {
-  // Load GTD allowlist only
-  ogWallets = await loadCSV('wallets/gtd.csv');
+document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
   const galleryGrid = document.getElementById('gallery-grid');
   const searchInput = document.getElementById('search-input');
@@ -161,9 +144,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       ? `${rawAddr.substring(0, 6)}...${rawAddr.substring(rawAddr.length - 4)}`
       : rawAddr;
 
-    // Check only GTD csv — anything else is Public eligible
+    // Check GTD_ALLOWLIST (from wallets/gtd-list.js — works on file:// and server)
     const lowerAddr = rawAddr.toLowerCase();
-    const isGTD = ogWallets.has(lowerAddr);
+    const isGTD = gtdWallets.has(lowerAddr);
 
     if (isGTD) {
       checkerResultBox.innerHTML = `
