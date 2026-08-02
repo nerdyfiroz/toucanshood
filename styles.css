@@ -463,6 +463,17 @@ body {
   align-items: center;
 }
 
+/* Variant: no artwork image — specs centred */
+.poster-body-noart {
+  display: flex;
+  justify-content: center;
+}
+
+.poster-body-noart .poster-specs {
+  max-width: 520px;
+  width: 100%;
+}
+
 .poster-art-wrap {
   border: 3px solid #eeff41;
   background: #7cd354;
@@ -488,10 +499,10 @@ body {
   background: #061706;
   border: 1px solid rgba(238, 255, 65, 0.3);
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-heading);
   font-size: 0.95rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -514,27 +525,16 @@ body {
 
 .spec-val {
   color: #eeff41;
-  margin-left: auto;
+  margin-left: auto;  /* always pushes value to the far right */
+  text-align: right;
+  white-space: nowrap;
 }
 
-.spec-group-header {
-  margin-top: 4px;
-}
-
-.spec-sub {
-  margin-left: 20px;
-  background: #092109;
-}
-
-.spec-sub .spec-key {
-  color: #a3ff70;
-  font-size: 0.85rem;
-}
-
-.spec-sub .spec-val {
-  color: #eeff41;
-  font-size: 0.85rem;
-}
+/* No more PRICE AND LIMIT sub-items — kept for backwards compat */
+.spec-group-header { margin-top: 4px; }
+.spec-sub { margin-left: 0; background: #061706; }
+.spec-sub .spec-key { color: #a3ff70; font-size: 0.85rem; }
+.spec-sub .spec-val { color: #eeff41; font-size: 0.85rem; }
 
 /* ==========================================================================
    WALLETS ELIGIBILITY CHECKER
@@ -1212,8 +1212,12 @@ body {
   .hero-description {
     margin-left: auto;
     margin-right: auto;
+    max-width: 560px;
   }
   .hero-actions {
+    justify-content: center;
+  }
+  .hero-stats {
     justify-content: center;
   }
   .poster-body {
@@ -1238,21 +1242,70 @@ body {
   .nav-links {
     display: none;
   }
+  /* Hide wallet checker CTA button in navbar on mobile — it crowds the hamburger area */
+  .nav-checker-btn {
+    display: none !important;
+  }
   .hero-title {
     font-size: 2rem;
   }
   .hero-stats {
     grid-template-columns: repeat(2, 1fr);
   }
-  .gallery-controls {
-    flex-direction: column;
-    align-items: stretch;
+  .announcement-poster {
+    padding: 24px 18px;
   }
-  .filter-group {
-    flex-direction: column;
-    align-items: stretch;
+  .poster-body-noart {
+    padding: 0 8px;
   }
-  .select-custom {
+  .spec-pill {
+    font-size: 0.8rem;
+    padding: 10px 14px;
+  }
+  .checker-card {
+    padding: 28px 20px;
+  }
+  .checker-input-box {
+    flex-direction: column;
+  }
+  .checker-input {
     width: 100%;
+  }
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  .hero-title {
+    font-size: 1.6rem;
+  }
+  .hero-badge {
+    font-size: 0.65rem;
+  }
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .stat-value {
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .sample-wallets {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sample-btn {
+    width: 100%;
+    text-align: center;
   }
 }

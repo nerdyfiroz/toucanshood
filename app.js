@@ -2,7 +2,31 @@
    TOUCANSHOOD — Interactive Application Script
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+// Allowlist state loaded from wallets/gtd.csv and wallets/public.csv
+let ogWallets = new Set();
+let fcfsWallets = new Set();
+
+// Parse a simple CSV file with a single 'wallet_address' column
+async function loadCSV(url) {
+  const addresses = new Set();
+  try {
+    const response = await fetch(url);
+    if (!response.ok) return addresses;
+    const text = await response.text();
+    text.split('\n').forEach((line, i) => {
+      if (i === 0) return; // skip header
+      const addr = line.trim();
+      if (addr) addresses.add(addr.toLowerCase());
+    });
+  } catch (e) {
+    console.warn(`Could not load ${url}:`, e);
+  }
+  return addresses;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Load GTD allowlist only
+  ogWallets = await loadCSV('wallets/gtd.csv');
   // DOM Elements
   const galleryGrid = document.getElementById('gallery-grid');
   const searchInput = document.getElementById('search-input');
@@ -137,26 +161,27 @@ document.addEventListener('DOMContentLoaded', () => {
       ? `${rawAddr.substring(0, 6)}...${rawAddr.substring(rawAddr.length - 4)}`
       : rawAddr;
 
-    // Simulated Eligibility Logic (Deterministic based on address pattern)
-    const isOG = rawAddr.toLowerCase().includes('892') || rawAddr.endsWith('e7') || rawAddr.length % 2 === 0;
+    // Check only GTD csv — anything else is Public eligible
+    const lowerAddr = rawAddr.toLowerCase();
+    const isGTD = ogWallets.has(lowerAddr);
 
-    if (isOG) {
+    if (isGTD) {
       checkerResultBox.innerHTML = `
         <div class="result-success">
           <div class="result-badge" style="color: var(--neon-green);">
-            🎉 CONGRATULATIONS! WALLET IS OG FREEMINT ELIGIBLE!
+            🎉 WALLET REGISTERED FOR GTD FREE MINT
           </div>
           <div style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 12px;">
-            Address: <strong style="color: var(--neon-cyan);">${shortAddr}</strong>
+            Address: <strong style="color: var(--neon-green);">${shortAddr}</strong>
           </div>
           <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; font-size: 0.85rem;">
-            <span style="background: rgba(0, 245, 160, 0.15); border: 1px solid var(--neon-green); padding: 4px 12px; border-radius: 20px; color: var(--neon-green);">
-              • Tier: OG FREEMINT
+            <span style="background: rgba(0,245,160,0.15); border: 1px solid var(--neon-green); padding: 4px 12px; border-radius: 20px; color: var(--neon-green);">
+              • Tier: GTD FREE MINT
             </span>
-            <span style="background: rgba(0, 245, 160, 0.15); border: 1px solid var(--neon-green); padding: 4px 12px; border-radius: 20px; color: var(--neon-green);">
-              • Price: 0.00 ETH (FREE)
+            <span style="background: rgba(0,245,160,0.15); border: 1px solid var(--neon-green); padding: 4px 12px; border-radius: 20px; color: var(--neon-green);">
+              • Price: FREE
             </span>
-            <span style="background: rgba(0, 245, 160, 0.15); border: 1px solid var(--neon-green); padding: 4px 12px; border-radius: 20px; color: var(--neon-green);">
+            <span style="background: rgba(0,245,160,0.15); border: 1px solid var(--neon-green); padding: 4px 12px; border-radius: 20px; color: var(--neon-green);">
               • Limit: 1 Per Wallet
             </span>
             <span style="background: rgba(0, 245, 160, 0.15); border: 1px solid var(--neon-green); padding: 4px 12px; border-radius: 20px; color: var(--neon-green);">
@@ -168,36 +193,23 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
-      showToast('🎉 Wallet is OG FREEMINT Eligible!');
+      showToast('🎉 Wallet is GTD FREE MINT Eligible!');
     } else {
+      // Not in GTD → eligible for Public mint
       checkerResultBox.innerHTML = `
         <div class="result-public">
           <div class="result-badge" style="color: var(--neon-cyan);">
-            ⚡ WALLET REGISTERED FOR FCFS ALLOWLIST
+            ⚡ ELIGIBLE FOR PUBLIC MINT
           </div>
           <div style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 12px;">
             Address: <strong style="color: var(--neon-cyan);">${shortAddr}</strong>
           </div>
-          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; font-size: 0.85rem;">
-            <span style="background: rgba(0, 210, 255, 0.15); border: 1px solid var(--neon-cyan); padding: 4px 12px; border-radius: 20px; color: var(--neon-cyan);">
-              • Tier: FCFS ALLOWLIST
-            </span>
-            <span style="background: rgba(0, 210, 255, 0.15); border: 1px solid var(--neon-cyan); padding: 4px 12px; border-radius: 20px; color: var(--neon-cyan);">
-              • Price: 0.0005 ETH
-            </span>
-            <span style="background: rgba(0, 210, 255, 0.15); border: 1px solid var(--neon-cyan); padding: 4px 12px; border-radius: 20px; color: var(--neon-cyan);">
-              • Limit: 3 Per Wallet
-            </span>
-            <span style="background: rgba(0, 210, 255, 0.15); border: 1px solid var(--neon-cyan); padding: 4px 12px; border-radius: 20px; color: var(--neon-cyan);">
-              • Chain: Robinhood Chain
-            </span>
-          </div>
-          <div style="margin-top: 14px; font-size: 0.8rem; color: var(--text-muted);">
-            Mint starts 06.08.26 on OpenSea 🚀
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">
+            This wallet is eligible for the <strong style="color:var(--neon-cyan);">Public Mint</strong> at <strong style="color:var(--neon-cyan);">0.0005 ETH</strong> on OpenSea (Robinhood Chain) — 06.08.26 🚀
           </div>
         </div>
       `;
-      showToast('⚡ Wallet Eligible for FCFS Allowlist (0.0005 ETH)');
+      showToast('⚡ Eligible for Public Mint (0.0005 ETH)');
     }
   }
 
@@ -283,12 +295,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="toucan-card" data-id="${item.id}">
         <div class="card-img-wrap">
           <img class="card-img pixelated" src="${item.file}" alt="${item.name}" loading="lazy">
-          <span class="card-rank">Rank #${item.rarityRank}</span>
+          <span class="card-rank">#000</span>
         </div>
         <div class="card-content">
           <div class="card-header">
             <h4 class="card-title">${item.name}</h4>
-            <span class="tier-badge tier-${item.tier}">${item.tier}</span>
           </div>
           <div class="trait-tags">
             <span class="trait-pill">🧢 ${item.headwear}</span>
@@ -321,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalImg.src = toucan.file;
     modalTitle.textContent = toucan.name;
-    modalSubtitle.textContent = `Rarity Rank #${toucan.rarityRank} • Rarity Score ${toucan.score}`;
+    modalSubtitle.textContent = `Toucanshood Collection #000`;
     modalDesc.textContent = toucan.description;
 
     modalTraitsGrid.innerHTML = `
