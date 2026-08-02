@@ -2,7 +2,7 @@ const toucansData = [
   {
     id: 1,
     name: "Toucan #01 — Violet Beanie",
-    file: "Padfgetkhi.png",
+    file: "images/Padfgetkhi.png",
     rarityRank: 3,
     tier: "Legendary",
     background: "Neon Lime",
@@ -17,7 +17,7 @@ const toucansData = [
   {
     id: 2,
     name: "Toucan #02 — Propeller Ace",
-    file: "ttttkhi.png",
+    file: "images/ttttkhi.png",
     rarityRank: 1,
     tier: "Mythic",
     background: "Tropical Green",
@@ -32,7 +32,7 @@ const toucansData = [
   {
     id: 3,
     name: "Toucan #03 — Crimson Hood",
-    file: "Padrtfgetkhi.png",
+    file: "images/Padrtfgetkhi.png",
     rarityRank: 5,
     tier: "Epic",
     background: "Jade Green",
@@ -47,7 +47,7 @@ const toucansData = [
   {
     id: 4,
     name: "Toucan #04 — Neon Wanderer",
-    file: "Padrtftrtgetkhi.png",
+    file: "images/Padrtftrtgetkhi.png",
     rarityRank: 8,
     tier: "Rare",
     background: "Fresh Leaf",
@@ -62,7 +62,7 @@ const toucansData = [
   {
     id: 5,
     name: "Toucan #05 — Golden Beak",
-    file: "Paeetkhi.png",
+    file: "images/Paeetkhi.png",
     rarityRank: 2,
     tier: "Legendary",
     background: "Bright Emerald",
@@ -77,7 +77,7 @@ const toucansData = [
   {
     id: 6,
     name: "Toucan #06 — Cyber Puffer",
-    file: "Pagfhfghgkhi.png",
+    file: "images/Pagfhfghgkhi.png",
     rarityRank: 7,
     tier: "Epic",
     background: "Vibrant Lime",
@@ -92,7 +92,7 @@ const toucansData = [
   {
     id: 7,
     name: "Toucan #07 — Shadow Aviator",
-    file: "Pakghghi.png",
+    file: "images/Pakghghi.png",
     rarityRank: 4,
     tier: "Epic",
     background: "Neon Lime",
@@ -107,7 +107,7 @@ const toucansData = [
   {
     id: 8,
     name: "Toucan #08 — Emerald Ranger",
-    file: "dffghgetkhi.png",
+    file: "images/dffghgetkhi.png",
     rarityRank: 10,
     tier: "Rare",
     background: "Classic Green",
@@ -122,7 +122,7 @@ const toucansData = [
   {
     id: 9,
     name: "Toucan #09 — Prism Beak",
-    file: "dfgfghgetkhi.png",
+    file: "images/dfgfghgetkhi.png",
     rarityRank: 6,
     tier: "Epic",
     background: "Lime Spark",
@@ -137,7 +137,7 @@ const toucansData = [
   {
     id: 10,
     name: "Toucan #10 — Chill Wave",
-    file: "dfghgetkhi.png",
+    file: "images/dfghgetkhi.png",
     rarityRank: 12,
     tier: "Uncommon",
     background: "Meadow Green",
@@ -152,7 +152,7 @@ const toucansData = [
   {
     id: 11,
     name: "Toucan #11 — Sunset Flier",
-    file: "fghhgetkhi.png",
+    file: "images/fghhgetkhi.png",
     rarityRank: 11,
     tier: "Uncommon",
     background: "Bright Lime",
@@ -167,7 +167,7 @@ const toucansData = [
   {
     id: 12,
     name: "Toucan #12 — Midnight Scout",
-    file: "fghhhgetkhi.png",
+    file: "images/fghhhgetkhi.png",
     rarityRank: 9,
     tier: "Rare",
     background: "Neon Green",
@@ -182,7 +182,7 @@ const toucansData = [
   {
     id: 13,
     name: "Toucan #13 — Storm Feather",
-    file: "sdfgfghgetkhi.png",
+    file: "images/sdfgfghgetkhi.png",
     rarityRank: 13,
     tier: "Common",
     background: "Jungle Green",
@@ -197,7 +197,7 @@ const toucansData = [
   {
     id: 14,
     name: "Toucan #14 — Pixel Pioneer",
-    file: "tttkhi - Copy.png",
+    file: "images/tttkhi - Copy.png",
     rarityRank: 14,
     tier: "Common",
     background: "Pure Green",
