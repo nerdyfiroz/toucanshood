@@ -2,14 +2,28 @@
    TOUCANSHOOD — Interactive Application Script
    ========================================================================== */
 
-// Build GTD wallet Set from gtd-list.js (case-insensitive, works on file:// too)
-// GTD_ALLOWLIST is declared in wallets/gtd-list.js loaded before this script
-const gtdWallets = new Set(
-  (typeof GTD_ALLOWLIST !== 'undefined' ? GTD_ALLOWLIST : [])
-    .map(a => a.toLowerCase())
-);
+// GTD Wallet Allowlist loaded from wallets/gtd.csv
+let gtdWallets = new Set(["0x6d2fa7f71971259f8cbd9d4118e491039a476172"]);
 
-document.addEventListener('DOMContentLoaded', () => {
+async function loadGTDCSV() {
+  try {
+    const res = await fetch('wallets/gtd.csv');
+    if (!res.ok) return;
+    const text = await res.text();
+    text.split(/\r?\n/).forEach(line => {
+      const addr = line.trim();
+      if (addr && addr.startsWith('0x')) {
+        gtdWallets.add(addr.toLowerCase());
+      }
+    });
+  } catch (e) {
+    console.warn('Could not fetch wallets/gtd.csv:', e);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadGTDCSV();
+
   // DOM Elements
   const galleryGrid = document.getElementById('gallery-grid');
   const searchInput = document.getElementById('search-input');
