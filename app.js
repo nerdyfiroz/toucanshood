@@ -245,50 +245,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   function renderGallery() {
     if (!galleryGrid) return;
 
-    const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-    const headwearVal = filterHeadwear ? filterHeadwear.value : '';
-    const outfitVal = filterOutfit ? filterOutfit.value : '';
-    const tierVal = filterTier ? filterTier.value : '';
-    const sortVal = sortSelect ? sortSelect.value : 'id';
-
-    // Filter
-    let filtered = toucansData.filter(item => {
-      const matchesSearch = item.name.toLowerCase().includes(query) ||
-                            item.description.toLowerCase().includes(query) ||
-                            item.tier.toLowerCase().includes(query);
-      const matchesHeadwear = !headwearVal || item.headwear === headwearVal;
-      const matchesOutfit = !outfitVal || item.outwear === outfitVal;
-      const matchesTier = !tierVal || item.tier === tierVal;
-
-      return matchesSearch && matchesHeadwear && matchesOutfit && matchesTier;
-    });
-
-    // Sort
-    filtered.sort((a, b) => {
-      if (sortVal === 'rarity') return a.rarityRank - b.rarityRank;
-      if (sortVal === 'rarity-desc') return b.rarityRank - a.rarityRank;
-      if (sortVal === 'name') return a.name.localeCompare(b.name);
-      return a.id - b.id;
-    });
+    // Only use first 6 items
+    const display = toucansData.slice(0, 6);
 
     // Update Counter
     if (countDisplay) {
-      countDisplay.textContent = `Showing ${filtered.length} preview artworks (2,222 total collection supply)`;
+      countDisplay.textContent = `Showing 6 preview artworks (2,222 total collection supply)`;
     }
 
     // Render Cards HTML
-    if (filtered.length === 0) {
-      galleryGrid.innerHTML = `
-        <div class="no-results">
-          <span class="no-results-icon">🦜</span>
-          <h3>No Toucans Found</h3>
-          <p>Try adjusting your search query or filters.</p>
-        </div>
-      `;
-      return;
-    }
-
-    galleryGrid.innerHTML = filtered.map(item => `
+    galleryGrid.innerHTML = display.map(item => `
       <div class="toucan-card" data-id="${item.id}">
         <div class="card-img-wrap">
           <img class="card-img pixelated" src="${item.file}" alt="Toucanshood #000" loading="lazy">
