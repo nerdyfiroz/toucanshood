@@ -110,10 +110,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     randomizeBtn.addEventListener('click', () => {
       const randomIndex = Math.floor(Math.random() * toucansData.length);
       const toucan = toucansData[randomIndex];
+      const toucansLabel = `Toucanshood #${String(toucan.id).padStart(3, '0')}`;
       randomImg.src = toucan.file;
-      randomName.textContent = toucan.name;
+      randomName.textContent = toucansLabel;
       playSound(520, 'square', 0.12);
-      showToast(`Selected ${toucan.name}`);
+      showToast(`Selected ${toucansLabel}`);
     });
   }
 
@@ -192,21 +193,21 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
       showToast('🎉 Wallet is GTD FREE MINT Eligible!');
     } else {
-      // Not in GTD → eligible for Public mint
+      // Not in GTD list
       checkerResultBox.innerHTML = `
-        <div class="result-public">
-          <div class="result-badge" style="color: var(--neon-cyan);">
-            ⚡ ELIGIBLE FOR PUBLIC MINT
+        <div class="result-not-eligible">
+          <div class="result-badge" style="color: var(--neon-orange, #ff6b35);">
+            ❌ NOT ELIGIBLE FOR GTD SLOT
           </div>
           <div style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 12px;">
-            Address: <strong style="color: var(--neon-cyan);">${shortAddr}</strong>
+            Address: <strong style="color: var(--neon-orange, #ff6b35);">${shortAddr}</strong>
           </div>
           <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">
-            This wallet is eligible for the <strong style="color:var(--neon-cyan);">Public Mint</strong> at <strong style="color:var(--neon-cyan);">0.0005 ETH</strong> on OpenSea (Robinhood Chain) — 06.08.26 🚀
+            This wallet is <strong style="color: var(--neon-orange, #ff6b35);">not registered</strong> for the GTD Free Mint slot.
           </div>
         </div>
       `;
-      showToast('⚡ Eligible for Public Mint (0.0005 ETH)');
+      showToast('❌ Not eligible for GTD slot');
     }
   }
 
@@ -291,11 +292,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     galleryGrid.innerHTML = filtered.map(item => `
       <div class="toucan-card" data-id="${item.id}">
         <div class="card-img-wrap">
-          <img class="card-img pixelated" src="${item.file}" alt="${item.name}" loading="lazy">
+          <img class="card-img pixelated" src="${item.file}" alt="Toucanshood #${String(item.id).padStart(3, '0')}" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-header">
-            <h4 class="card-title">${item.name}</h4>
+            <h4 class="card-title">Toucanshood #${String(item.id).padStart(3, '0')}</h4>
           </div>
         </div>
       </div>
