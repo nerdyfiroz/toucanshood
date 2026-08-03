@@ -110,11 +110,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     randomizeBtn.addEventListener('click', () => {
       const randomIndex = Math.floor(Math.random() * toucansData.length);
       const toucan = toucansData[randomIndex];
-      const toucansLabel = `Toucanshood #${String(toucan.id).padStart(3, '0')}`;
       randomImg.src = toucan.file;
-      randomName.textContent = toucansLabel;
+      randomName.textContent = 'Toucanshood #000';
       playSound(520, 'square', 0.12);
-      showToast(`Selected ${toucansLabel}`);
+      showToast('Selected Toucanshood #000');
     });
   }
 
@@ -292,11 +291,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     galleryGrid.innerHTML = filtered.map(item => `
       <div class="toucan-card" data-id="${item.id}">
         <div class="card-img-wrap">
-          <img class="card-img pixelated" src="${item.file}" alt="Toucanshood #${String(item.id).padStart(3, '0')}" loading="lazy">
+          <img class="card-img pixelated" src="${item.file}" alt="Toucanshood #000" loading="lazy">
         </div>
         <div class="card-content">
           <div class="card-header">
-            <h4 class="card-title">Toucanshood #${String(item.id).padStart(3, '0')}</h4>
+            <h4 class="card-title">Toucanshood #000</h4>
           </div>
         </div>
       </div>
@@ -324,7 +323,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     playSound(580, 'triangle', 0.15);
 
     modalImg.src = toucan.file;
-    modalTitle.textContent = toucan.name;
+    modalTitle.textContent = 'Toucanshood #000';
     if (modalSubtitle) modalSubtitle.textContent = '';
     if (modalDesc) modalDesc.textContent = '';
     if (modalTraitsGrid) modalTraitsGrid.innerHTML = '';
@@ -332,7 +331,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (modalDownloadBtn) {
       modalDownloadBtn.href = toucan.file;
-      modalDownloadBtn.download = `Toucan_${toucan.id}.png`;
+      modalDownloadBtn.download = 'Toucanshood_000.png';
     }
 
     modalOverlay.classList.add('active');
