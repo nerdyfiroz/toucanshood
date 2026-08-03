@@ -245,9 +245,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   function renderGallery() {
     if (!galleryGrid) return;
 
-    // Pick 6 visually distinct items from across the dataset
-    const pickIds = [1, 2, 7, 8, 9, 14];
-    const display = toucansData.filter(item => pickIds.includes(item.id));
+    // Use all 6 real images
+    const display = toucansData;
 
     // Update Counter
     if (countDisplay) {
